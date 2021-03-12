@@ -1,4 +1,217 @@
+$color-primary: #307d71;
+
+/*
+ * Gaps
+ */
+$gap-xxxs: 0.1rem;
+$gap-xxs: 0.3rem;
+$gap-xs: 0.5rem;
+$gap-s: 0.8rem;
+$gap-m: 1rem;
+$gap-ml: 1.25rem;
+$gap-l: 2rem;
+$gap-xl: 2.5rem;
+$gap-xxl: 3.125rem;
+$gap-xxxl: 4.8375rem;
+$gap-xxxxl: 5.6rem;
+
+$color-white: #fff;
+$color-white-off: #f7f7f7;
+$color-black: #222928;
+
+$color-gray-lighter: #f3f5f4;
+$color-gray-light: #f3f5f4;
+$color-gray: #e8ebea;
+$color-gray-dark: #c1cac8;
+$color-gray-darker: #838d8b;
+$color-gray-darkest: #6d7170;
+
+$color-primary: #307d71;
+$color-primary-dark: #105e52;
+$color-secondary: #fa5200;
+
+$color-background: $color-white-off;
+
 .example-page__container {
     max-width: 50rem;
-    margin: 0 auto;
+    margin: 4rem auto;
+    // border: 1px solid black;
+}
+.example-page__container--tiny {
+    max-width: 15rem;
+    margin: 4rem auto;
+    // border: 1px solid black;
+}
+.example-page__container--small {
+    max-width: 25rem;
+    margin: 4rem auto;
+    // border: 1px solid black;
+}
+.example-page__container--large {
+    max-width: 80rem;
+    margin: 4rem auto;
+    // border: 1px solid black;
+}
+
+body,
+main {
+    padding: 0;
+    margin: 0;
+}
+
+/**
+ * Widget styles
+ */
+.erfgoedkit-widget {
+    font-family: "Roboto", sans-serif;
+    padding: $gap-m $gap-ml;
+
+    border-radius: 20px;
+    background-color: $color-white;
+
+    box-shadow: 0 -0.1px 2.3px rgba(0, 0, 0, 0.009),
+        0 0.3px 5.8px rgba(0, 0, 0, 0.017), 0 1.5px 11.9px rgba(0, 0, 0, 0.031),
+        0 4px 24.5px rgba(0, 0, 0, 0.053), 0 11px 67px rgba(0, 0, 0, 0.11);
+}
+[data-larger-size="true"] .erfgoedkit-widget {
+    padding: $gap-l $gap-xl;
+}
+
+/**
+ * Widget global classes
+ */
+.erfgoedkit-widget__sr-only {
+    position: absolute;
+    overflow: hidden;
+    margin: 0;
+    clip: rect(0 0 0 0);
+    width: 1px;
+    height: auto;
+    padding: 0;
+    border: 0;
+    white-space: nowrap;
+}
+
+/**
+ * Widget header
+ */
+.erfgoedkit-widget__header {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: center;
+    margin-bottom: 0.2rem;
+}
+.erfgoedkit-widget__title {
+    margin: 0 1rem 0 0;
+    width: 165px;
+    color: $color-primary;
+}
+.erfgoedkit-widget__sub-title {
+    margin: 0;
+    line-height: 1.4;
+    font-size: 16px;
+}
+[data-larger-size="true"] .erfgoedkit-widget__sub-title {
+    font-size: 22px;
+    transform: translateY(-3px);
+}
+.erfgoedkit-widget__image-title {
+}
+
+/**
+ * Widget form elements layout
+ */
+.erfgoedkit-widget__form-inner {
+    overflow: hidden;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin: 0 -1rem;
+}
+.erfgoedkit-widget__form-item,
+.erfgoedkit-widget__submit {
+    flex-basis: calc(100% - 2rem);
+    flex-grow: 1;
+    flex-shrink: 0;
+    margin: 2rem 1rem 0;
+}
+
+[data-larger-size="true"] .erfgoedkit-widget__form-item,
+[data-larger-size="true"] .erfgoedkit-widget__submit {
+    min-width: 300px;
+    flex-basis: calc(33% - 2rem);
+}
+
+/**
+ * Widget ...
+ */
+.erfgoedkit-widget__form-item {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+/**
+ * Widget submit
+ */
+.erfgoedkit-widget__submit {
+    padding: 0.8rem 2.5rem;
+
+    text-align: center;
+    font-size: 14px;
+    line-height: 1;
+
+    color: white;
+    background-color: $color-primary;
+    border-radius: 50px;
+    border: 3px solid $color-primary;
+}
+
+/**
+ * Widget label etc.
+ */
+/**
+ * Select
+ */
+.erfgoedkit-widget__label {
+    margin-bottom: 0.5rem;
+}
+.erfgoedkit-widget__input {
+    appearance: none;
+    width: 100%;
+    padding: $gap-s $gap-xl $gap-s $gap-m;
+
+    background-color: $color-gray-light;
+    border: none;
+    line-height: 1;
+    font-size: 14px;
+}
+[data-larger-size="true"] .erfgoedkit-widget__input {
+    // Align height of input with button input
+    padding: $gap-m $gap-xl $gap-m $gap-m;
+}
+
+.erfgoedkit-widget__input:hover,
+.erfgoedkit-widget__input:focus {
+    background-color: $color-gray;
+    cursor: pointer;
+}
+.erfgoedkit-widget__input:focus {
+    outline: 2px solid $color-gray-dark;
+}
+
+// Select icon
+.erfgoedkit-widget__input-icon {
+    width: $gap-m;
+    height: $gap-m;
+    pointer-events: none;
+    position: absolute;
+    bottom: $gap-s;
+    right: $gap-m;
+    transform: rotate(90deg);
+}
+[data-larger-size="true"] .erfgoedkit-widget__input-icon {
+    bottom: $gap-m;
 }
