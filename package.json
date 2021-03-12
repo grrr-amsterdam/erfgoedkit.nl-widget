@@ -1,0 +1,33 @@
+{
+    "name": "parcel-scaffold",
+    "version": "1.0.0",
+    "description": "## Docs Parcel docs: [www.parceljs.org/getting_started](https://parceljs.org/getting_started.html)",
+    "main": "index.js",
+    "scripts": {
+        "dev": "parcel *.html",
+        "build": "parcel build *.html",
+        "format": "prettier --write ."
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/MartijnNieuwenhuizen/parcel-scaffold.git"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/MartijnNieuwenhuizen/parcel-scaffold/issues"
+    },
+    "homepage": "https://github.com/MartijnNieuwenhuizen/parcel-scaffold#readme",
+    "devDependencies": {
+        "parcel-bundler": "^1.12.4",
+        "prettier": "2.1.1",
+        "sass": "^1.26.10"
+    },
+    "dependencies": {
+        "@grrr/hansel": "^2.1.0"
+    },
+    "resolutions": {
+        "@babel/preset-env": "7.13.8"
+    }
+}
