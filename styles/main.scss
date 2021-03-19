@@ -35,22 +35,18 @@ $color-background: $color-white-off;
 .example-page__container {
     max-width: 50rem;
     margin: 4rem auto;
-    // border: 1px solid black;
 }
 .example-page__container--tiny {
     max-width: 15rem;
     margin: 4rem auto;
-    // border: 1px solid black;
 }
 .example-page__container--small {
     max-width: 25rem;
     margin: 4rem auto;
-    // border: 1px solid black;
 }
 .example-page__container--large {
     max-width: 80rem;
     margin: 4rem auto;
-    // border: 1px solid black;
 }
 
 body,
@@ -73,6 +69,21 @@ main {
         0 0.3px 5.8px rgba(0, 0, 0, 0.017), 0 1.5px 11.9px rgba(0, 0, 0, 0.031),
         0 4px 24.5px rgba(0, 0, 0, 0.053), 0 11px 67px rgba(0, 0, 0, 0.11);
 }
+
+.erfgoedkit-widget {
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    p,
+    label,
+    input {
+        color: $color-black;
+    }
+}
+
 [data-larger-size="true"] .erfgoedkit-widget {
     padding: $gap-l $gap-xl;
 }
@@ -104,7 +115,9 @@ main {
 }
 .erfgoedkit-widget__title {
     margin: 0 1rem 0 0;
+    padding: 0;
     width: 165px;
+    font-size: 1rem;
     color: $color-primary;
 }
 .erfgoedkit-widget__sub-title {
