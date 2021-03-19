@@ -20,14 +20,16 @@
     },
     "homepage": "https://github.com/MartijnNieuwenhuizen/parcel-scaffold#readme",
     "devDependencies": {
+        "@babel/core": "^7.13.10",
+        "@babel/preset-env": "^7.13.12",
+        "@babel/preset-react": "^7.12.13",
         "parcel-bundler": "^1.12.4",
         "prettier": "2.1.1",
         "sass": "^1.26.10"
     },
-    "dependencies": {
-        "@grrr/hansel": "^2.1.0"
-    },
+    "dependencies": {},
     "resolutions": {
         "@babel/preset-env": "7.13.8"
-    }
+    },
+    "browserslist": "> 0.25%, not dead"
 }
