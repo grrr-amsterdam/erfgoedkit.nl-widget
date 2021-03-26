@@ -1,0 +1,83 @@
+name: Distribute
+
+on:
+  push:
+    tags:
+      - v*
+
+env:
+  FORCE_COLOR: true # yarn ansi output
+
+jobs:
+  distribute:
+    name: Distribute widget assets
+    runs-on: ubuntu-18.04
+
+    env:
+      AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+      AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      API_URL: ${{ secrets.API_URL }}
+
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: "12"
+
+      - name: Get yarn cache directory path
+        id: yarn-cache-dir-path
+        run: echo "::set-output name=dir::$(yarn cache dir)"
+      - uses: actions/cache@v2
+        id: yarn-cache
+        with:
+          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-
+
+      - run: yarn install
+
+      - run: yarn build
+
+      - name: Archive deploy output
+        uses: actions/upload-artifact@v2
+        with:
+          name: yarn-run-deploy-output
+          path: dist
+
+      - name: Publish front-end
+        run: |
+          jsFile=$( ls dist/*.js | head -n 1 )
+          cssFile=$( ls dist/*.css | head -n 1 )
+          aws s3 cp "$jsFile" "s3://erfgoedkit-widget/${GITHUB_REF#refs/tags/}/script.js"
+          aws s3 cp "$cssFile" "s3://erfgoedkit-widget/${GITHUB_REF#refs/tags/}/style.css"
+
+          aws s3 cp --recursive dist s3://erfgoedkit-widget/
+
+      - name: Invalidate CloudFront distribution
+        run: aws cloudfront create-invalidation --distribution-id="E2IGS3WXW2G03J" --path="/*"
+
+  notification:
+    name: Slack notification
+    runs-on: ubuntu-20.04
+    if: always()
+    needs: [ distribute ]
+
+    env:
+      SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+
+    steps:
+      - name: Extract branch name
+        shell: bash
+        run: echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
+        id: extract_branch
+
+      - name: Send notification
+        uses: edge/simple-slack-notify@master
+        with:
+          channel: "#ci"
+          username: Publish
+          status: ${{ (contains(needs.*.result, 'cancelled') && 'cancelled') || (contains(needs.*.result, 'failure') && 'failure') || 'success' }}
+          success_text: ":octocat: Erfgoedkit widget is gepubliceerd. :rocket:"
+          failure_text: ":octocat: Erfgoedkit widget publicatie heeft jammerlijk gefaald. :poop:"
+          cancelled_text: ":octocat: Erfgoedkit widget publicatie is geannuleerd."
