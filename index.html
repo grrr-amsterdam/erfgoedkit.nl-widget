@@ -6,9 +6,52 @@
         <title>Parcel Scaffold</title>
 
         <link rel="stylesheet" href="./styles/main.scss" />
+
+        <style>
+            body {
+                margin: 0;
+                padding: 0;
+                line-height: 1.6;
+            }
+            article {
+                max-width: 40rem;
+                margin: 0 auto;
+                font-family: sans-serif;
+            }
+            a {
+                color: #307d71;
+            }
+
+            h1,
+            h2 {
+                margin-bottom: 0;
+            }
+            h2 {
+                margin-top: 4rem;
+            }
+        </style>
     </head>
-    <body style="margin: 0; padding: 0">
-        <h1>Example page</h1>
+
+    <body>
+        <article>
+            <h1>The NDE Widget</h1>
+            <p>
+                This is the Widget, provided by
+                <a href="https://netwerkdigitaalerfgoed.nl/"
+                    >NDE (Netwerk digitaal erfgoed)</a
+                >. For more information, bug reports or Pull requests, visit the
+                <a href="https://github.com/grrr-amsterdam/erfgoedkit.nl-widget"
+                    >GitHub page</a
+                >.
+            </p>
+
+            <h2>Examples</h2>
+            <p>
+                Below you can find 4 embedded widgets, all with a different
+                maximum width. This displays the automatic responsiveness of the
+                widget.
+            </p>
+        </article>
 
         <div style="max-width: 15rem; margin: 4rem auto">
             <div data-container="nde-widget"></div>
