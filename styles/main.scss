@@ -147,6 +147,8 @@
     margin-bottom: 0.5rem;
 }
 .erfgoedkit-widget__input {
+    -webkit-appearance: none;
+    -moz-appearance: none;
     appearance: none;
     width: 100%;
     padding: $gap-s $gap-xl $gap-s $gap-m;
