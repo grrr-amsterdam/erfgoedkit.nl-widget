@@ -2,8 +2,8 @@ name: Distribute
 
 on:
   push:
-#    tags:
-#      - v*
+    tags:
+      - v*
 
 env:
   FORCE_COLOR: true # yarn ansi output
@@ -47,12 +47,10 @@ jobs:
 
       - name: Publish front-end
         run: |
-          jsFile=`ls dist/*.js | head -n 1`
-          cssFile=`ls dist/*.css | head -n 1`
-          echo "$jsFile"
-          echo "$cssFile"
-          aws s3 cp "$jsFile" s3://erfgoedkit-widget/v1/script.js
-          aws s3 cp "$cssFile" s3://erfgoedkit-widget/v1/style.css
+          jsFile=$( ls dist/*.js | head -n 1 )
+          cssFile=$( ls dist/*.css | head -n 1 )
+          aws s3 cp "$jsFile" "s3://erfgoedkit-widget/${GITHUB_REF#refs/tags/}/script.js"
+          aws s3 cp "$cssFile" "s3://erfgoedkit-widget/${GITHUB_REF#refs/tags/}/style.css"
 
           aws s3 cp --recursive dist s3://erfgoedkit-widget/
 
