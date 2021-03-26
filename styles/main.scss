@@ -1,59 +1,5 @@
-$color-primary: #307d71;
-
-/*
- * Gaps
- */
-$gap-xxxs: 0.1rem;
-$gap-xxs: 0.3rem;
-$gap-xs: 0.5rem;
-$gap-s: 0.8rem;
-$gap-m: 1rem;
-$gap-ml: 1.25rem;
-$gap-l: 2rem;
-$gap-xl: 2.5rem;
-$gap-xxl: 3.125rem;
-$gap-xxxl: 4.8375rem;
-$gap-xxxxl: 5.6rem;
-
-$color-white: #fff;
-$color-white-off: #f7f7f7;
-$color-black: #222928;
-
-$color-gray-lighter: #f3f5f4;
-$color-gray-light: #f3f5f4;
-$color-gray: #e8ebea;
-$color-gray-dark: #c1cac8;
-$color-gray-darker: #838d8b;
-$color-gray-darkest: #6d7170;
-
-$color-primary: #307d71;
-$color-primary-dark: #105e52;
-$color-secondary: #fa5200;
-
-$color-background: $color-white-off;
-
-.example-page__container {
-    max-width: 50rem;
-    margin: 4rem auto;
-}
-.example-page__container--tiny {
-    max-width: 15rem;
-    margin: 4rem auto;
-}
-.example-page__container--small {
-    max-width: 25rem;
-    margin: 4rem auto;
-}
-.example-page__container--large {
-    max-width: 80rem;
-    margin: 4rem auto;
-}
-
-body,
-main {
-    padding: 0;
-    margin: 0;
-}
+@import "./variables.scss";
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400&display=swap");
 
 /**
  * Widget styles
@@ -119,6 +65,7 @@ main {
     width: 165px;
     font-size: 1rem;
     color: $color-primary;
+    font-weight: 400;
 }
 .erfgoedkit-widget__sub-title {
     margin: 0;
@@ -180,6 +127,14 @@ main {
     background-color: $color-primary;
     border-radius: 50px;
     border: 3px solid $color-primary;
+    transition: 0.3s ease-in-out border-color, 0.3s ease-in-out background-color;
+    font-family: inherit;
+}
+.erfgoedkit-widget__submit:hover,
+.erfgoedkit-widget__submit:focus {
+    cursor: pointer;
+    background-color: $color-primary-dark;
+    border-color: $color-primary-dark;
 }
 
 /**
