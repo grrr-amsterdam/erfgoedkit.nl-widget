@@ -46,12 +46,14 @@ jobs:
 
       - name: Publish front-end
         run: |
-          jsFiles=dist/*.js
-          cssFiles=dist/*.css
-          echo "$jsFiles"
-          echo "${jsFiles[1]}"
-          aws s3 cp "${jsFiles[1]}" s3://erfgoedkit-widget/v1/script.js
-          aws s3 cp "${cssFiles[1]}" s3://erfgoedkit-widget/v1/style.css
+          jsFile=`ls dist/*.js | head -n 1`
+          cssFile=`ls dist/*.css | head -n 1`
+          echo "$jsFile"
+          echo "$cssFile"
+          aws s3 cp "$jsFile" s3://erfgoedkit-widget/v1/script.js
+          aws s3 cp "$cssFile" s3://erfgoedkit-widget/v1/style.css
+
+          aws s3 cp --recursive dist s3://erfgoedkit-widget/
 
       - name: Invalidate CloudFront distribution
         run: aws cloudfront create-invalidation --distribution-id="E2IGS3WXW2G03J" --path="/*"
