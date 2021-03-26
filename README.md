@@ -13,7 +13,7 @@ desired location on the page.
 <div data-container="nde-widget"></div>
 ```
 
-You can place this element wherever you like. The widget will place itself inside this element.
+You can place this element wherever you like. The widget will place itself inside this element. No need to set any size attributes, the widget will ensure it fits inside the given box.
 
 It's also possible to add multiple widgets on the same page.
 
@@ -22,7 +22,7 @@ It's also possible to add multiple widgets on the same page.
 #### Example
 
 ```html
-<link rel="stylesheet" href="source.nl/v1/main.css" />
+<link rel="stylesheet" href="https://widget.erfgoedkit.nl/v1/main.css" />
 ```
 
 ### 3. Include the script in your body
@@ -30,7 +30,7 @@ It's also possible to add multiple widgets on the same page.
 #### Example
 
 ```js
-<script src="source.nl/v1/script.js"></script>
+<script src="https://widget.erfgoedkit.nl/v1/script.js"></script>
 ```
 
 This script will insert the Widget inside the desired element.
