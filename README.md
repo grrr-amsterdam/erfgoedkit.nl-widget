@@ -22,7 +22,7 @@ It's also possible to add multiple widgets on the same page.
 #### Example
 
 ```html
-<link rel="stylesheet" href="https://widget.erfgoedkit.nl/v1.0.0/style.css" />
+<link rel="stylesheet" href="https://widget.erfgoedkit.nl/v1.0.1/style.css" />
 ```
 
 ### 3. Include the script in your body
@@ -30,7 +30,7 @@ It's also possible to add multiple widgets on the same page.
 #### Example
 
 ```js
-<script src="https://widget.erfgoedkit.nl/v1.0.0/script.js"></script>
+<script src="https://widget.erfgoedkit.nl/v1.0.1/script.js"></script>
 ```
 
 This script will insert the Widget inside the desired element.
