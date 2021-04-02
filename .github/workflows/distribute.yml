@@ -61,7 +61,7 @@ jobs:
     name: Slack notification
     runs-on: ubuntu-20.04
     if: always()
-    needs: [ distribute ]
+    needs: [distribute]
 
     env:
       SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
