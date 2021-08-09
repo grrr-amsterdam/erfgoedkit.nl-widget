@@ -22,12 +22,12 @@ const handleResize = (element) => () => {
  */
 const createWidgets = (widgetContainers) => ({
     instruments_url,
+    werkterrein,
     onderwerp,
-    verschijningsvorm,
 }) => {
     widgetContainers.forEach((container) => {
         // Create and append form
-        const form = createForm(instruments_url, onderwerp, verschijningsvorm);
+        const form = createForm(instruments_url, werkterrein, onderwerp);
         form.addEventListener("submit", handleSubmit(form));
         container.appendChild(form);
 
