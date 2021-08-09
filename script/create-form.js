@@ -29,10 +29,10 @@ const createFormSection = ({ items, label, slug }) => {
 /**
  * Create the widget (form)
  */
-export default (url, subject, appearance) => {
+export default (url, domain, subject) => {
     // Create form sections
+    const domainSection = createFormSection(domain);
     const subjectSection = createFormSection(subject);
-    const appearanceSection = createFormSection(appearance);
 
     // Create form element.
     // This is done with the createElement method so it's easy to connect a listener
@@ -53,8 +53,8 @@ export default (url, subject, appearance) => {
     </div>
 
     <div class="erfgoedkit-widget__form-inner">
+        ${domainSection}
         ${subjectSection}
-        ${appearanceSection}
 
         <button class="erfgoedkit-widget__submit" type="submit">Bekijk de hulpmiddelen</button>
     </div>
