@@ -5,7 +5,7 @@ on:
     branches:
       - "**"
     tags-ignore:
-      - "*-release"
+      - "v*"
 
 jobs:
   prettier:
