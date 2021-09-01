@@ -19,7 +19,7 @@ const createFormSection = ({ items, label, slug }) => {
 <div class="erfgoedkit-widget__form-item">
     <label class="erfgoedkit-widget__label" for="${slug}">${label}</label>
     <select class="erfgoedkit-widget__input js-form-input" name="subject" id="${slug}">
-        <option value="">Kies een ${label}</option>
+        <option value="">Kies een ${label.toLowerCase()}</option>
         ${optionList}
     </select>
     <span class="erfgoedkit-widget__input-icon" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 14 14" xmlns="http://www.w3.org/2000/svg"><path stroke="currentColor" stroke-width="2" d="M4 1l6 6-6 6" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
