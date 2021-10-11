@@ -1,5 +1,19 @@
 # Erfgoedkit.nl Widget
 
+<!-- Header & Preview Image -->
+<h1 align="center">
+  <img src=".github/readme-hero.png">
+</h1>
+
+Third parties can use this widget to add an interactive link to <a href="https://erfgoedkit.nl">erfgoedkit.nl</a>.
+
+### Developed with ❤️ by [GRRR](https://grrr.nl)
+
+- GRRR is a [B Corp](https://grrr.nl/en/b-corp/)
+- GRRR has a [tech blog](https://grrr.tech/)
+- GRRR is [hiring](https://grrr.nl/en/jobs/)
+- [@GRRRTech](https://twitter.com/grrrtech) tweets
+
 ## How to add the widget to your website
 
 ### 1. Add an HTML element
