@@ -8,16 +8,25 @@ on:
 jobs:
   distribute:
     name: Distribute widget assets
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-22.04
 
     env:
-      AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-      AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
       API_URL: "https://erfgoedkit.nl/api/widget-v2"
 
+    permissions:
+      contents: read
+      id-token: write
+
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
+      - uses: actions/checkout@v3
+
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          role-to-assume: arn:aws:iam::308691726112:role/deploy-erfgoedkit-widget
+          aws-region: eu-central-1
+
+      - uses: actions/setup-node@v3
         with:
           node-version: "12"
           cache: "yarn"
@@ -27,15 +36,15 @@ jobs:
       - run: yarn build
 
       - name: Archive deploy output
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: yarn-run-deploy-output
           path: dist
 
       - name: Publish front-end
         run: |
-          jsFile=$( ls dist/*.js | head -n 1 )
-          cssFile=$( ls dist/*.css | head -n 1 )
+          jsFile=$( find -s dist -maxdepth 1 -name '*.js' | head -n 1 )
+          cssFile=$( find -s dist -maxdepth 1 -name '*.css' | head -n 1 )
           aws s3 cp "$jsFile" "s3://erfgoedkit-widget/${GITHUB_REF#refs/tags/}/script.js"
           aws s3 cp "$cssFile" "s3://erfgoedkit-widget/${GITHUB_REF#refs/tags/}/style.css"
 
@@ -46,7 +55,7 @@ jobs:
 
   notification:
     name: Slack notification
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
     if: always()
     needs: [distribute]
 
@@ -56,7 +65,7 @@ jobs:
     steps:
       - name: Extract branch name
         shell: bash
-        run: echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
+        run: echo "##[set-output name=branch;]${GITHUB_REF#refs/heads/}"
         id: extract_branch
 
       - name: Send notification
