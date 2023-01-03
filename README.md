@@ -1,5 +1,7 @@
 # Erfgoedkit.nl Widget
 
+## PROJECT ENDED
+
 <!-- Header & Preview Image -->
 <h1 align="center">
   <img src=".github/readme-hero.png">
